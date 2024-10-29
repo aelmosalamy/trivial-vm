@@ -25,4 +25,40 @@ Codewise, this VM makes use of C structs to model different VM components includ
 */
 ```
 
-Looking forward to *tiny-vm*!
+## usage
+
+Compiled using the provided `compile.bat`:
+```sh
+C:\> .\compile.bat
+Compiling into 'vm.exe'...
+Compiled successfully.
+```
+
+Run `vm.exe`:
+```sh
+C:\> .\vm.exe
+vm  = 0000021CD61A1FB0 (sz: 4366)
+prog  = 0000021CD61A1FBC
+ax = 0000
+executing program on vm...
+System halted
+ax = 0005
+01 05 00 02 03 00 00 00 00
+```
+
+The above is a test run of the following program:
+```
+01 05 00 02 03 00 00 00 00
+```
+which translates to:
+```c
+// 0x01     opcode: mov arg1 to ax
+// 0x05                 arg1
+// 0x00                 arg2
+// 0x02     opcode: nop
+// 0x03     opcode: hlt
+```
+
+## future work
+- Implement IO/serial communication
+- More advanced VM, perhaps *tiny-vm* :)
